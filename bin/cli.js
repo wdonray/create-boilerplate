@@ -14,12 +14,11 @@ if (process.argv.length < 3) {
 }
 
 const projectName = process.argv[2];
-const projectPath = path.join(process.cwd(), projectName);
 
 async function createDirectory() {
   try {
     // Create a new project folder
-    fs.mkdirSync(projectPath);
+    fs.mkdirSync(path.join(process.cwd(), projectName));
   } catch (err) {
     // If the folder already exists, we stop the process
     if (err.code === "EEXIST") {
