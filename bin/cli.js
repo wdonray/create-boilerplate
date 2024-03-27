@@ -15,19 +15,21 @@ if (process.argv.length < 3) {
 
 const projectName = process.argv[2];
 
+/**
+ * This function creates a new directory with the project name
+ * If the directory already exists, the process stops
+ * If there is an error, the process stops
+ */
 async function createDirectory() {
   try {
-    // Create a new project folder
     fs.mkdirSync(path.join(process.cwd(), projectName));
   } catch (err) {
-    // If the folder already exists, we stop the process
     if (err.code === "EEXIST") {
       console.log(
         `The file ${projectName} already exist in the current directory, please give it another name.`
       );
       process.exit(1);
     }
-    // If there was another error, we stop the process
     console.log(err);
     process.exit(1);
   }
@@ -46,8 +48,12 @@ async function runCommand(command) {
   }
 }
 
-async function clonePayroll() {
-  const cloneCommand = `git clone --depth 1 https://github.com/neonmoose/neon-dash.git ${projectName}`;
+/**
+ * This function clones a repository from a given URL
+ * @param {string} repoUrl - The URL of the repository to clone
+ */
+async function cloneRepo(repoUrl) {
+  const cloneCommand = `git clone --depth 1 ${repoUrl} ${projectName}`;
   const installCommand = `cd ${projectName} && npm install`;
   try {
     console.log("Downloading files... 📦");
@@ -56,7 +62,7 @@ async function clonePayroll() {
     console.log("Installing dependencies... 🚚");
     await runCommand(installCommand);
 
-    console.log("Welcome to Payroll's boilerplate! 🚀");
+    console.log(`Repo cloned from ${repoUrl}🚀`);
   } catch (err) {
     console.log(err);
     process.exit(1);
@@ -64,4 +70,4 @@ async function clonePayroll() {
 }
 
 createDirectory();
-clonePayroll();
+cloneRepo("https://github.com/neonmoose/neon-dash.git");

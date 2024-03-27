@@ -1,12 +1,8 @@
 {
   "name": "@donrayxwilliams/create-boilerplate",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "start": "parcel index.html",
-    "build": "parcel build index.js"
-  },
   "bin": "./bin/cli.js",
   "author": "",
   "license": "ISC",
