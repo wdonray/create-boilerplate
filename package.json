@@ -3,9 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/wdonray"
-  },
   "scripts": {
     "start": "parcel index.html",
     "build": "parcel build index.js"
