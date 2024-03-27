@@ -34,17 +34,28 @@ async function createDirectory() {
   }
 }
 
+/**
+ * This function runs a command in the terminal
+ * @param {string} command - The command to run
+ */
+async function runCommand(command) {
+  try {
+    execSync(command, { stdio: "inherit" });
+  } catch (err) {
+    console.log(err);
+    process.exit(1);
+  }
+}
+
 async function clonePayroll() {
+  const cloneCommand = `git clone --depth 1 https://github.com/neonmoose/neon-dash.git ${projectName}`;
+  const installCommand = `cd ${projectName} && npm install`;
   try {
     console.log("Downloading files... 📦");
-    execSync(
-      `git clone --depth 1 https://github.com/neonmoose/neon-dash.git ${projectPath}`
-    );
-
-    process.chdir(projectPath);
+    await runCommand(cloneCommand);
 
     console.log("Installing dependencies... 🚚");
-    execSync("npm install");
+    await runCommand(installCommand);
 
     console.log("Welcome to Payroll's boilerplate! 🚀");
   } catch (err) {
