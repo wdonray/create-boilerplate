@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
 // Importing the required modules
-import { execSync } from "child_process";
-import path from "path";
-import fs from "fs";
+const { execSync } = require("child_process");
+const path = require("path");
+const fs = require("fs");
 
 // We verify that an app name is provided with no additional arguments
 if (process.argv.length < 3) {
