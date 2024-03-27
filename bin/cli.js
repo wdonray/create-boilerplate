@@ -46,10 +46,6 @@ async function clonePayroll() {
     console.log("Installing dependencies... 🚚");
     execSync("npm install");
 
-    console.log("Removing files... 🧹");
-    execSync("npx rimraf ./.git");
-    fs.rmdirSync(path.join(projectPath, "bin"), { recursive: true });
-
     console.log("Welcome to Payroll's boilerplate! 🚀");
   } catch (err) {
     console.log(err);
