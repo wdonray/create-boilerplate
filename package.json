@@ -1,0 +1,21 @@
+{
+  "name": "create-boilerplate",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.js"
+  },
+  "bin": {
+    "create-boilerplate": "./payroll-boilerplate.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "rimraf": "^5.0.5"
+  }
+}
